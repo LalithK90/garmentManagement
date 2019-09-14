@@ -1,6 +1,7 @@
 package lk.css.garmentManagement.config;
 
-import lk.CSS.GarmentManagement.general.security.service.UserDetailsServiceImpl;
+
+import lk.css.garmentManagement.security.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
