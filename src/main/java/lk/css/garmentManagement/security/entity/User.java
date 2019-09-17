@@ -1,24 +1,23 @@
 package lk.css.garmentManagement.security.entity;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lk.css.garmentManagement.asset.employee.entity.Employee;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties(value ="createdDate", allowGetters = true)
+@ToString
+@JsonIgnoreProperties(value = "createdDate", allowGetters = true)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +28,7 @@ public class User {
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false)
     @Size(min = 5, message = "user name should include at least five characters")
     private String username;
 
@@ -47,6 +46,6 @@ public class User {
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    private List<Role> roles;
 
 }

@@ -1,6 +1,7 @@
 package lk.css.garmentManagement.security.service;
 
 
+
 import lk.css.garmentManagement.security.dao.RoleDao;
 import lk.css.garmentManagement.security.entity.Role;
 import lk.css.garmentManagement.util.interfaces.AbstractService;
@@ -8,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class RoleService implements AbstractService< Role, Long> {
     private final RoleDao roleDao;
 
@@ -19,6 +22,7 @@ public class RoleService implements AbstractService< Role, Long> {
     public RoleService(RoleDao roleDao) {
         this.roleDao = roleDao;
     }
+
 
 
     public List<Role> findAll() {
